@@ -59,6 +59,9 @@ Contenedor de informacion
 
 .contenedor-btn{
     text-align: end;
+    position: fixed;
+    right: 30px;
+    bottom: 35px;
 }
 
 .contenedor-informacion table{
