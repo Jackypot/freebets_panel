@@ -1,0 +1,79 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - - -
+Swicht Btn
+- - - - - - - - - - - - - - - - - - - - - - - - - - */
+.contenedor-swichtBtn{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.swichtBtn__Border{
+    border: .5px solid rgba(0,0,0,0.3);
+    border-radius: 15px;
+    padding: 3px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    margin: 0px auto;
+}
+
+.swichtBtn__Border div{
+    display: inline-block;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.swichtBtn__Border div p{
+    margin: 0px;
+    padding: 0px;
+    padding-top: 8px;
+    height: 39px;
+    width: 99px;
+    border-radius: 15px;
+    border: none;
+}
+
+.swichtBtn__Border .active{
+    background-color: rgb(78, 167, 154);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - -
+Contenedor de informacion
+- - - - - - - - - - - - - - - - - - - - - - - - - - */
+.contenedor-informacion{
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    opacity: 0;
+}
+
+.contenedor-btn{
+    text-align: end;
+}
+
+.contenedor-informacion table{
+    border-radius: 5px;
+    border: none;
+    -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
+            box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
+    margin-top: 15px;
+}}
+
+.contenedor-informacion table p{
+    margin: 0px;
+}
+
+.contenedor-informacion table .btn i{
+    font-size: 2rem !important;
+    line-height: inherit;
+}
