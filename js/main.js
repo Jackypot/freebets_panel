@@ -179,15 +179,12 @@ function checkDatos (){
         }
 
         if (array.length > 0) {
-            // enviar_datos_eventoOne(array);
-        }else {
-            M.toast({html: 'No se estan enviando datos, porfavor seleccione datos a enviar', classes: 'rounded'});
-        }
-
-    }else {
-        M.toast({html: 'Parece que estamos en el evento 2', classes: 'rounded'});
-    }
+            enviar_datos_eventoOne(array);
+        }else { M.toast({html: 'No se estan enviando datos, porfavor seleccione datos a enviar', classes: 'rounded'}); }
+    }else { M.toast({html: 'Parece que estamos en el evento 2', classes: 'rounded'}); }
 }
+
+
 function enviar_datos_eventoOne(json){
     let url = "http://192.168.1.75:8080/freebets";
     return fetch(url, {method: 'post', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify({"operativo": 1,"data":json })})
