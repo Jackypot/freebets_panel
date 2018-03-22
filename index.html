@@ -16,14 +16,86 @@
     <script src="js/materialize.js"></script>
 </head>
 <body>
+    <!-- Navegacion de la pagina -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo"></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li id="operativo_1"><a href="#">Operativo 1</a></li>
+                <li id="operativo_2"><a href="#">Operativo 2</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Navegacion movil -->
+    <ul class="sidenav" id="mobile-demo">
+        <li id="operativo_1_m"><a href="#">Operativo 1</a></li>
+        <li id="operativo_2_m"><a href="#">Operativo 2</a></li>
+    </ul>
+
+    <!-- Contenedor de la pagina -->
     <div class="container">
-        <div class="contenedor-swichtBtn">
-            <div class="swichtBtn__Border" id="swichtBtn">
-                <div><p id="evento_one">Evento 1</p></div>
-                <div><p id="evento_two">Evento 2</p></div>
+        <!-- Contenedor de Operativo 1 -->
+        <div class="contenedor_tabla_operativo_1">
+            <h2 class="text-center">Seccion de Operativo 1</h2>
+            <table id="tabla_operativo_1" class="highlight centered">
+                <thead>
+                    <tr>
+                        <th>#Id</th>
+                        <th>Direccion</th>
+                        <th>Apuesta User</th>
+                        <th>Tiros Gratis</th>
+                        <th>Url</th>
+                        <th>Validar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large waves-effect waves-light green darken-3 tooltipped" data-position="left" data-tooltip="Enviar datos"><i class="material-icons">send</i></a>
             </div>
         </div>
-        <div class="contenedor-informacion" id="contenedor-informacion">
+        <div class="contenedor_tabla_operativo_2">
+            <h2 class="text-center">Seccion de Operativo 2</h2>
+            <h6 class="text-center">Seleccione los datos que desea visualizar:</h6>
+            <div class="contenedor-swichtBtn">
+                <div class="swichtBtn__Border" id="swichtBtn">
+                    <div><p id="btn_bitcoin_talks">BitCoin Talks</p></div>
+                    <div><p id="btn_demo">Jackypot Demo</p></div>
+                </div>
+            </div>
+            <div class="cont-tabla2">
+                <table id="tabla_operativo_2" class="highlight centered">
+                    <thead>
+                        <tr>
+                            <th>#Id</th>
+                            <th>Direccion</th>
+                            <th>Tiros Gratis</th>
+                            <th>Ver Url</th>
+                            <th>Validar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large waves-effect waves-light green darken-3 tooltipped" data-position="left" data-tooltip="Enviar datos"><i class="material-icons">send</i></a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+       <!--  <div class="contenedor-informacion" id="contenedor-informacion">
             <div class="contenedor-btn" id="contenedor-btn">
                 <button class="btn waves-effect waves-light" type="submit" name="action" id="btn-enviar">ENVIAR
                     <i class="material-icons right">send</i>
@@ -43,9 +115,10 @@
                 <tbody>
                 </tbody>
             </table>
-        </div>
+        </div> -->
     </div>
 </body>
 <!-- JavaScript DOMContent -->
+<script src="js/inits.js"></script>
 <script src="js/main.js"></script>
 </html>

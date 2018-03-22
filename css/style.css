@@ -1,4 +1,63 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - -
+Globales
+- - - - - - - - - - - - - - - - - - - - - - - - - - */
+.text-center{
+    text-align: center;
+    color: #243065;
+}
+
+html{
+    background-color: #d6e6f359;
+}
+
+table.highlight > tbody > tr:hover{
+    background-color: #9eedfa45;
+}
+
+td, th{
+    text-align: center;
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - -
+Navegacion
+- - - - - - - - - - - - - - - - - - - - - - - - - - */
+nav{
+    background: #12111e;
+}
+
+nav ul a:hover{
+    background-color: #32a0d1;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - -
+Estilos de Contenedor de operativo 1
+- - - - - - - - - - - - - - - - - - - - - - - - - - */
+.contenedor_tabla_operativo_1{
+    display: none;
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - -
+Estilos de Contenedor de operativo 2
+- - - - - - - - - - - - - - - - - - - - - - - - - - */
+.contenedor_tabla_operativo_2{
+    display: none;
+}
+
+.cont-tabla2{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - -
 Swicht Btn
 - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .contenedor-swichtBtn{
@@ -18,8 +77,8 @@ Swicht Btn
 
 .swichtBtn__Border div{
     display: inline-block;
-    height: 40px;
-    width: 100px;
+    height: 41px;
+    width: 156px;
     text-align: center;
     cursor: pointer;
     -webkit-user-select: none;
@@ -33,7 +92,7 @@ Swicht Btn
     padding: 0px;
     padding-top: 8px;
     height: 39px;
-    width: 99px;
+    width: 155px;
     border-radius: 15px;
     border: none;
 }
@@ -70,7 +129,7 @@ Contenedor de informacion
     -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
             box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
     margin-top: 15px;
-}}
+}
 
 .contenedor-informacion table p{
     margin: 0px;
