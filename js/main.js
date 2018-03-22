@@ -83,6 +83,7 @@ function EventoOne (){
             let address = document.createElement("td");
             let url = document.createElement("td");
             let check = document.createElement("td");
+            let apuesta = document.createElement("td");
 
             id.innerHTML = data[item].id;
             address.innerHTML = data[item].address;
@@ -92,9 +93,12 @@ function EventoOne (){
             bets.innerHTML = tiros_correspondientes;
             url.innerHTML = "<input type='text' name='' value=''>"
             check.innerHTML = "<p><label><input type='checkbox'/><span></span></label></p>"
+            apuesta.innerHTML = (data[item].Valor / 100000000000000000).toString()+" ETH";
+
 
             tr.appendChild(id);
             tr.appendChild(address);
+            tr.appendChild(apuesta);
             tr.appendChild(bets);
             tr.appendChild(url);
             tr.appendChild(check);
