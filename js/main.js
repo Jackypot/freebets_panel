@@ -159,6 +159,8 @@ function mostrar_datos_Operativo1 (){
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 document.getElementById("operativo_2").addEventListener("click", accion_Switches, false);
 document.getElementById("operativo_2_m").addEventListener("click", accion_Switches, false);
+
+// Asignar al Swicht las acciones correspondientes
 function accion_Switches (){
     document.querySelector(".contenedor_tabla_operativo_1").style.display = "none";
     document.querySelector(".contenedor_tabla_operativo_2").style.display = "block";
@@ -199,6 +201,7 @@ function accion_Switches (){
     // });
 }
 
+// Mostrar los datos de Bitcoin Talks
 function mostrar_datos_bitcoin_talks() {
     let cont_tabla2 = document.querySelector(".cont-tabla2");
     cont_tabla2.style.display = "block";
@@ -236,6 +239,7 @@ function mostrar_datos_bitcoin_talks() {
     }
 }
 
+// Mostrar los datos de Jackypot Demo
 function mostrar_datos_demo(){
     let cont_tabla2 = document.querySelector(".cont-tabla2");
     cont_tabla2.style.display = "block";
@@ -268,8 +272,9 @@ function mostrar_datos_demo(){
         tbody.appendChild(tr);
     }
 }
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Envio de datos
+// Envio de datos - POST
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // document.getElementById("btn-enviar").addEventListener("click", checkDatos, false);
 function checkDatos (){
