@@ -126,8 +126,17 @@ function checkDatosOP1 (){
             if (checkboxes[i].type === 'checkbox') {
                 if(checkboxes[i].checked === true){
 
+                    function addZero(i) {
+                        if (i < 10) { i = "0" + i; }
+                        return i;
+                    }
+
+                    let d = new Date();
+                    let fecha = d.getUTCFullYear().toString()+("0" + (d.getUTCMonth() + 1)).slice(-2).toString()+d.getUTCDate().toString();
+                    let horas = d.getUTCHours().toString()+d.getUTCMinutes().toString()+addZero(d.getUTCSeconds()).toString();
+
                     let dato_guardar = document.getElementById("data-"+(i-contador).toString());
-                    let aux = {"id": dato_guardar.childNodes[0].innerText, "folio": "bitcointalkPromo", "numTiros": dato_guardar.childNodes[2].innerText, "url": dato_guardar.childNodes[4].childNodes[0].value};
+                    let aux = {"id": dato_guardar.childNodes[0].innerText, "folio": "bitcointalkPromo", "numTiros": dato_guardar.childNodes[3].innerText, "url": dato_guardar.childNodes[4].childNodes[0].value, "fecha": fecha, "hora": hora};
                     array.push(aux);
 
                 };
@@ -159,6 +168,23 @@ function enviar_datos_eventoOne(json){
 document.getElementById("operativo_2").addEventListener("click", accion_Switches, false);
 document.getElementById("operativo_2_m").addEventListener("click", accion_Switches, false);
 
+function recibirDatosOP2(){
+    var DatosR = new Promise(function (resolve, reject) {
+        let url = "https://jackynet.eu-4.evennode.com/freebets/OP2";
+
+        return fetch(url, {method: 'post', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify({ }) })
+        .then(function(response){
+            if (!response.ok) {throw Error(response.statusText);}
+            resolve(response.json());})
+        .catch(function(error) { console.error('Parece que hubo un error: ' + error); });
+
+        reject(new Error('Parece que tuvimos un error'))
+
+    });
+
+    return DatosR;
+}
+
 // Asignar al Swicht las acciones correspondientes
 function accion_Switches (){
     document.querySelector(".contenedor_tabla_operativo_1").style.display = "none";
@@ -166,38 +192,6 @@ function accion_Switches (){
 
     document.getElementById("btn_bitcoin_talks").addEventListener("click", mostrar_datos_bitcoin_talks, false);
     document.getElementById("btn_demo").addEventListener("click", mostrar_datos_demo, false);
-
-
-    // eventoOneActivo = false;
-    // recibirDatos(2).then(function(data){
-    //     for (var item in data) {
-
-    //         let tabla_datos = document.getElementById("tabla-datos").getElementsByTagName('tbody')[0];
-    //         let tr = document.createElement("tr");
-    //         let id = document.createElement("td");
-    //         let bets = document.createElement("td");
-    //         let address = document.createElement("td");
-    //         let url = document.createElement("td");
-    //         let check = document.createElement("td");
-
-    //         id.innerHTML = data[item].id;
-    //         address.innerHTML = data[item].address;
-    //         if (data[item].promo !== "tirodemo") bets.innerHTML = data[item].tirosGratis;
-    //         else bets.innerHTML = "1";
-
-    //         if (data[item].promo !== "tirodemo") url.innerHTML = "<a href='"+data[item].detalles+"' target='_blank'><button class='btn waves-effect waves-light' type='submit' name='action'>Go<i class='material-icons right'>http</i></button></a>";
-    //         else  url.innerHTML = "Tiro demo";
-    //         check.innerHTML = "<p><label><input type='checkbox'/><span></span></label></p>"
-
-    //         tr.appendChild(id);
-    //         tr.appendChild(address);
-    //         tr.appendChild(bets);
-    //         tr.appendChild(url);
-    //         tr.appendChild(check);
-
-    //         tabla_datos.appendChild(tr);
-    //     }
-    // });
 }
 
 // Mostrar los datos de Bitcoin Talks
@@ -212,30 +206,58 @@ function mostrar_datos_bitcoin_talks() {
 
     if(tbody.childNodes.length > 1) tbody.innerHTML = "";
 
-    for (var i = 0; i < 10; i ++) {
+    recibirDatosOP2().then(function(data){
+        console.log(data.promobitcoin2);
+
+        for (var item in data.promobitcoin2) {
+
+            let tr = document.createElement("tr");
+            let id = document.createElement("td");
+            let bets = document.createElement("td");
+            let address = document.createElement("td");
+            let url = document.createElement("td");
+            let check = document.createElement("td");
+    
+            id.innerHTML = data.promobitcoin2[item].id;
+            address.innerHTML = data.promobitcoin2[item].address;
+            bets.innerHTML = parseInt(data.promobitcoin2[item].tirosGratis);
+            url.innerHTML = "<a href='"+data.promobitcoin2[item].detalle+"' target='_blank'><button class='btn waves-effect waves-light' type='submit' name='action'>Go<i class='material-icons right'>http</i></button></a>";
+            check.innerHTML = "<p><label><input type='checkbox'/><span></span></label></p>"
+    
+            tr.appendChild(id);
+            tr.appendChild(address);
+            tr.appendChild(bets);
+            tr.appendChild(url);
+            tr.appendChild(check);
+    
+            tbody.appendChild(tr);
+        }
+    });
+
+    // for (var i = 0; i < 10; i ++) {
         
-        let tr = document.createElement("tr");
-        let id = document.createElement("td");
-        let bets = document.createElement("td");
-        let address = document.createElement("td");
-        let url = document.createElement("td");
-        let check = document.createElement("td");
+    //     let tr = document.createElement("tr");
+    //     let id = document.createElement("td");
+    //     let bets = document.createElement("td");
+    //     let address = document.createElement("td");
+    //     let url = document.createElement("td");
+    //     let check = document.createElement("td");
 
-        id.innerHTML = i + 1;
-        address.innerHTML = "0xc4d2C44aAc80C9Acbf604D78666C7E844F1870E1";
-        bets.innerHTML = "1";
+    //     id.innerHTML = i + 1;
+    //     address.innerHTML = "0xc4d2C44aAc80C9Acbf604D78666C7E844F1870E1";
+    //     bets.innerHTML = "1";
 
-        url.innerHTML = "<a href='#' target='_blank'><button class='btn waves-effect waves-light' type='submit' name='action'>Go<i class='material-icons right'>http</i></button></a>";
-        check.innerHTML = "<p><label><input type='checkbox'/><span></span></label></p>"
+    //     url.innerHTML = "<a href='#' target='_blank'><button class='btn waves-effect waves-light' type='submit' name='action'>Go<i class='material-icons right'>http</i></button></a>";
+    //     check.innerHTML = "<p><label><input type='checkbox'/><span></span></label></p>"
 
-        tr.appendChild(id);
-        tr.appendChild(address);
-        tr.appendChild(bets);
-        tr.appendChild(url);
-        tr.appendChild(check);
+    //     tr.appendChild(id);
+    //     tr.appendChild(address);
+    //     tr.appendChild(bets);
+    //     tr.appendChild(url);
+    //     tr.appendChild(check);
 
-        tbody.appendChild(tr);
-    }
+    //     tbody.appendChild(tr);
+    // }
 }
 
 // Mostrar los datos de Jackypot Demo
@@ -250,39 +272,26 @@ function mostrar_datos_demo(){
 
     if(tbody.childNodes.length > 1) tbody.innerHTML = "";
 
-    for (var i = 0; i < 10; i ++) {
-        
-        let tr = document.createElement("tr");
-        let id = document.createElement("td");
-        let bets = document.createElement("td");
-        let address = document.createElement("td");
-        let check = document.createElement("td");
+    recibirDatosOP2().then(function(data){
+            
+        for(var item in data.promoTiroGratis){
+            let tr = document.createElement("tr");
+            let id = document.createElement("td");
+            let bets = document.createElement("td");
+            let addres = document.createElement("td");
+            let check = document.createElement("td");
 
-        id.innerHTML = i + 1;
-        address.innerHTML = "0xc4d2C44aAc80C9Acbf604D78666C7E844F1870E1";
-        bets.innerHTML = "1";
-        check.innerHTML = "<p><label><input type='checkbox'/><span></span></label></p>"
+            id.innerHTML = data.promoTiroGratis[item].id;
+            addres.innerHTML = data.promoTiroGratis[item].address;
+            bets.innerHTML = data.promoTiroGratis[item].tirosGratis === null ? 0 : parseInt(data.promoTiroGratis[item].tirosGratis);
+            check.innerHTML = "<p><label><input type='checkbox'/><span></span></label></p>"
 
-        tr.appendChild(id);
-        tr.appendChild(address);
-        tr.appendChild(bets);
-        tr.appendChild(check);
+            tr.appendChild(id);
+            tr.appendChild(addres);
+            tr.appendChild(bets);
+            tr.appendChild(check);
 
-        tbody.appendChild(tr);
-    }
-}
-
-function recibirDatosOP2(){
-    var DatosR = new Promise(function (resolve, reject) {
-        let url = "http://192.168.1.75:8080/freebets/OP2";
-
-        return fetch(url, {method: 'post', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify({ }) })
-        .then(function(response){if (!response.ok) {throw Error(response.statusText);} resolve(response.json());})
-        .catch(function(error) { console.error('Parece que hubo un error: ' + error); });
-
-        reject(new Error('Parece que tuvimos un error'))
-
+            tbody.appendChild(tr);
+        }
     });
-
-    return DatosR;
 }
